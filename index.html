@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jolie Luong</title>
+<meta name="description" content="Jolie Luong (Luong Tuong Vy) – data analyst and data engineer, MSc student at the University of Trento.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~720px) with a left index rail on wide screens; sections read like a data report */
+:root{
+  --bg:#f5f6f4; --surface:#ffffff; --ink:#18211f; --muted:#5b6662; --line:#dfe3df; --accent:#2f6b57; --accent-soft:#e3eee8;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121715; --surface:#19201d; --ink:#e6ebe8; --muted:#9aa6a1; --line:#2a3430; --accent:#7cc0a6; --accent-soft:#1f2e28; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121715; --surface:#19201d; --ink:#e6ebe8; --muted:#9aa6a1; --line:#2a3430; --accent:#7cc0a6; --accent-soft:#1f2e28; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0}
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px))}
+a{color:var(--accent); text-underline-offset:3px}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+.wrap{max-width:1040px; margin:0 auto; display:grid; grid-template-columns:180px minmax(0,1fr); gap:56px; padding-block:56px 72px}
+nav.rail{position:sticky; top:calc(env(safe-area-inset-top,0px) + 32px); align-self:start; display:flex; flex-direction:column; gap:10px; font-family:var(--mono); font-size:13px}
+nav.rail .mark{font-family:var(--display); font-size:22px; color:var(--ink); margin-bottom:14px; text-decoration:none}
+nav.rail a:not(.mark){color:var(--muted); text-decoration:none}
+nav.rail a:not(.mark):hover{color:var(--accent)}
+main{min-width:0; max-width:720px; display:flex; flex-direction:column; gap:72px}
+
+.eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+h1{font-family:var(--display); font-weight:400; font-size:clamp(40px,6vw,60px); line-height:1.05; margin:10px 0 18px; text-wrap:balance}
+h1 em{font-style:italic; color:var(--accent)}
+h2{font-family:var(--display); font-weight:500; font-size:30px; margin:0 0 6px; text-wrap:balance}
+h3{font-size:18px; font-weight:600; margin:0; line-height:1.35}
+p{margin:0}
+.lede{font-size:18px; color:var(--ink); max-width:60ch}
+.links{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.btn{font-family:var(--mono); font-size:13px; padding:9px 14px; border:1px solid var(--line); border-radius:6px; background:var(--surface); color:var(--ink); text-decoration:none; cursor:pointer}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:var(--bg)}
+.btn:hover{border-color:var(--accent)}
+.facts{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; margin-top:36px}
+.facts div{background:var(--surface); padding:16px 18px}
+.facts b{display:block; font-family:var(--display); font-weight:500; font-size:26px; font-variant-numeric:tabular-nums}
+.facts span{font-size:13px; color:var(--muted)}
+
+.section-head{display:flex; flex-direction:column; gap:4px; margin-bottom:24px}
+.section-head p{color:var(--muted); max-width:60ch}
+
+.projects{display:flex; flex-direction:column; gap:16px}
+.proj{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:22px 24px; display:flex; flex-direction:column; gap:10px}
+.proj-top{display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap}
+.status{font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:3px 8px; border-radius:99px; background:var(--accent-soft); color:var(--accent); white-space:nowrap}
+.status.plan{background:transparent; border:1px dashed var(--line); color:var(--muted)}
+.proj p{color:var(--muted)}
+.lineage{font-family:var(--mono); font-size:12.5px; color:var(--ink); overflow-x:auto; white-space:nowrap; padding:8px 0 2px; border-top:1px solid var(--line)}
+.lineage i{font-style:normal; color:var(--muted); padding:0 6px}
+.tags{display:flex; flex-wrap:wrap; gap:6px}
+.tags span{font-family:var(--mono); font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:2px 7px}
+
+.timeline{display:flex; flex-direction:column}
+.role{display:grid; grid-template-columns:150px minmax(0,1fr); gap:20px; padding:20px 0; border-top:1px solid var(--line)}
+.role:last-child{border-bottom:1px solid var(--line)}
+.when{font-family:var(--mono); font-size:13px; color:var(--muted); font-variant-numeric:tabular-nums}
+.role .org{color:var(--muted); font-size:15px; margin:2px 0 8px}
+.role ul{margin:0; padding-left:18px; color:var(--ink)}
+.role li{margin:3px 0}
+
+.skills{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px 28px}
+.skills dt{font-family:var(--mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); margin-bottom:4px}
+.skills dd{margin:0}
+
+.contact{background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:24px; display:flex; flex-direction:column; gap:14px}
+.copyrow{display:flex; flex-wrap:wrap; gap:10px; align-items:center}
+.copyrow code{font-family:var(--mono); font-size:14px; background:var(--accent-soft); padding:6px 10px; border-radius:6px; user-select:all; overflow-wrap:anywhere}
+footer{font-family:var(--mono); font-size:12px; color:var(--muted)}
+
+@media (max-width:820px){
+  .wrap{grid-template-columns:minmax(0,1fr); gap:28px; padding-block:28px 56px}
+  nav.rail{position:static; flex-direction:row; flex-wrap:wrap; gap:8px 16px; align-items:baseline}
+  nav.rail .mark{margin:0 8px 0 0; width:100%}
+  .facts{grid-template-columns:minmax(0,1fr)}
+  .role{grid-template-columns:minmax(0,1fr); gap:4px}
+  .skills{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:no-preference){ .btn{transition:border-color .15s} }
+</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <nav class="rail" aria-label="Sections">
+    <a class="mark" href="#top">Jolie Luong</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main id="top">
+    <header>
+      <div class="eyebrow">Data Analyst · Data Engineer · Trento, Italy</div>
+      <h1>I turn raw data into <em>reports people use</em>.</h1>
+      <p class="lede">I'm Luong Tuong Vy (Jolie). I spent 3.5 years building dbt models, pipelines and BI dashboards for risk, finance and product teams in Vietnamese securities and FMCG companies. I'm now doing an MSc in Behavioural and Applied Economics at the University of Trento.</p>
+      <div class="links">
+        <a class="btn primary" href="#contact">Get in touch</a>
+        <a class="btn" href="https://www.linkedin.com/in/tuong-vy-luong-67aa54236" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/vyluongtuong0812" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="CV_Luong_Tuong_Vy.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+      </div>
+      <div class="facts">
+        <div><b>3.5+ yrs</b><span>Data analytics &amp; engineering</span></div>
+        <div><b>1M+</b><span>Records processed daily at KAFI</span></div>
+        <div><b>~90%</b><span>Manual reporting cut by automation</span></div>
+      </div>
+    </header>
+
+    <section id="projects">
+      <div class="section-head">
+        <div class="eyebrow">Selected work</div>
+        <h2>Projects</h2>
+        <p>Work projects are described without company data. Public-data projects include full code.</p>
+      </div>
+      <div class="projects">
+        <article class="proj">
+          <div class="proj-top"><h3>Customer activity &amp; churn dashboards</h3><span class="status">Work · KAFI Securities</span></div>
+          <p>Dashboards for the Digital Product and Finance teams tracking active, inactive and churned customers month by month, built on dbt models with explicit activity and churn rules.</p>
+          <div class="lineage">accounts &amp; trades <i>→</i> dbt models <i>→</i> monthly activity <i>→</i> churn rules <i>→</i> dashboard</div>
+          <div class="tags"><span>BigQuery</span><span>dbt</span><span>Dagster</span><span>Metabase</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>What drives retail stock-investment decisions?</h3><span class="status">Research · UEH, 2023</span></div>
+          <p>Bachelor thesis using survey data (n = 254) and multiple linear regression. Awarded Prize A at the UEH Young Researcher Awards 2023.</p>
+          <div class="tags"><span>Survey design</span><span>OLS regression</span><span>Python</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Financial &amp; commodity data platform</h3><span class="status">Work · Thanh Cong Securities</span></div>
+          <p>Ingested Bloomberg, World Bank, FiinPro and web sources with Python scrapers and standardised them into analytical marts, with automated data-quality checks and Slack alerts.</p>
+          <div class="tags"><span>Python</span><span>SQL Server</span><span>dbt</span><span>Power BI</span></div>
+        </article>
+        <article class="proj">
+          <div class="proj-top"><h3>Eurostat open-data pipeline</h3><span class="status plan">In progress</span></div>
+          <p>A public end-to-end pipeline: Eurostat API → dbt + DuckDB → scheduled with GitHub Actions → published dashboard. Code will be on GitHub.</p>
+          <div class="tags"><span>DuckDB</span><span>dbt</span><span>GitHub Actions</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head">
+        <div class="eyebrow">Career</div>
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="role">
+          <div class="when">Apr 2025 – Aug 2026</div>
+          <div><h3>Data Engineer – BI &amp; Analytics</h3><div class="org">KAFI Securities, Ho Chi Minh City</div>
+            <ul><li>dbt models and pipelines on BigQuery and Dagster for Risk, Internal Control and Digital Sales</li><li>Migrated BI workloads to a Trino platform with Spark, Airflow and CI/CD</li></ul></div>
+        </div>
+        <div class="role">
+          <div class="when">Feb 2024 – Apr 2025</div>
+          <div><h3>Data Analyst</h3><div class="org">Thanh Cong Securities, Ho Chi Minh City</div>
+            <ul><li>Automated portfolio reporting in Power BI, cutting manual work by ~80%</li><li>Query time down 50% after model optimisation</li></ul></div>
+        </div>
+        <div class="role">
+          <div class="when">Feb 2023 – Feb 2024</div>
+          <div><h3>Data Analyst</h3><div class="org">GREENFEED Vietnam, Ho Chi Minh City</div>
+            <ul><li>Modelled SAP and Excel data in Redshift and dbt for P&amp;L, sales and supply chain</li><li>Automated 85% of recurring reports, saving ~15 hours a week</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-head">
+        <div class="eyebrow">Study</div>
+        <h2>Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="role">
+          <div class="when">2026 – 2028</div>
+          <div><h3>MSc Behavioural and Applied Economics</h3><div class="org">University of Trento, Italy</div>
+            <p>Applied econometrics, statistical methods and data learning, behavioural economics.</p></div>
+        </div>
+        <div class="role">
+          <div class="when">2020 – 2023</div>
+          <div><h3>BSc Finance – Banking</h3><div class="org">University of Economics Ho Chi Minh City (UEH)</div>
+            <p>GPA 8.31/10 · Prize A, UEH Young Researcher Award 2023</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <div class="eyebrow">Toolkit</div>
+        <h2>Skills</h2>
+      </div>
+      <dl class="skills">
+        <div><dt>Engineering</dt><dd>SQL, dbt, Python, Spark, Airflow, Dagster, Git, CI/CD</dd></div>
+        <div><dt>Warehouses</dt><dd>BigQuery, Redshift, SQL Server, Oracle, DuckDB</dd></div>
+        <div><dt>BI &amp; reporting</dt><dd>Power BI, Metabase, Excel, KPI design</dd></div>
+        <div><dt>Research</dt><dd>Survey analysis, regression, applied econometrics</dd></div>
+        <div><dt>Domain</dt><dd>Securities, P&amp;L, NAV, TWR, risk analytics</dd></div>
+        <div><dt>Languages</dt><dd>Vietnamese (native), English (B2)</dd></div>
+      </dl>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div class="eyebrow">Contact</div>
+        <h2>Let's talk</h2>
+        <p>Open to part-time data, research and reporting roles alongside my studies.</p>
+      </div>
+      <div class="contact">
+        <div class="copyrow"><code id="email">vyluongtuong0812@gmail.com</code><button class="btn" id="copyEmail" type="button">Copy email</button></div>
+        <div class="copyrow"><a class="btn" href="https://www.linkedin.com/in/tuong-vy-luong-67aa54236" target="_blank" rel="noopener">LinkedIn profile</a></div>
+      </div>
+    </section>
+
+    <footer>© 2026 Luong Tuong Vy · Trento, Italy</footer>
+  </main>
+</div>
+
+<script>
+document.getElementById('copyEmail').addEventListener('click', function(){
+  var btn=this, text=document.getElementById('email').textContent;
+  function done(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy email'},1600); }
+  function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById('email')); var s=getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent='Selected – press Ctrl/⌘ C'; }
+  try{ navigator.clipboard.writeText(text).then(done, fallback); }catch(e){ fallback(); }
+});
+</script>
+
+</body>
+</html>
